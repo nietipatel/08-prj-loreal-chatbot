@@ -1,2 +1,13 @@
-# Secrets file containing API keys
+# API Keys and Secrets
 secrets.js
+
+# Environment files
+.env
+.env.local
+
+# Node modules (if you add them later)
+node_modules/
+
+# OS generated files
+.DS_Store
+Thumbs.db

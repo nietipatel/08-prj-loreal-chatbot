@@ -108,9 +108,26 @@ function addMessage(content, sender) {
 async function getAIResponse(userMessage) {
   // Add the user's message to our conversation history array
   conversationHistory.push({
-    role: "user", // This tells the AI that this message came from the user
+    role: "user",
     content: userMessage,
   });
+
+  // For GitHub Pages deployment, return a demo response
+  if (
+    typeof OPENAI_API_KEY === "undefined" ||
+    OPENAI_API_KEY === "your-api-key-here"
+  ) {
+    // Demo response for GitHub Pages
+    const demoResponse =
+      "Thanks for your message! This is a demo version. To use the full AI assistant, please run this locally with your OpenAI API key.";
+
+    conversationHistory.push({
+      role: "assistant",
+      content: demoResponse,
+    });
+
+    return demoResponse;
+  }
 
   try {
     // Try to make the API request (this might fail, so we use try/catch)
